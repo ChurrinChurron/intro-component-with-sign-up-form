@@ -10,7 +10,7 @@ let nombre = document.getElementById("nombre");
  	textoEmail = document.getElementById("info-correo");
  	textoContraseña = document.getElementById("info-pass");
  	validar = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-
+	esValido = false;
  	envio.disabled = true;
 
  formu.addEventListener("submit", (ev) => {
@@ -28,7 +28,7 @@ let nombre = document.getElementById("nombre");
  		textoNombre.innerHTML = "First Name cannot be empty";
  		nombre.style.border = "solid 2px hsl(0, 100%, 74%)";
  		equis[0].style.display = "inline-block";
- 		return false;
+ 		esValido = false;
 
  	}
 
@@ -37,7 +37,7 @@ let nombre = document.getElementById("nombre");
  		textoNombre.innerHTML = "";
  		nombre.style.border = "solid 1px hsl(246, 25%, 77%)";
  		equis[0].style.display = "none";
- 		return true;
+ 		esValido = true;
  	}
 
  });
@@ -51,7 +51,7 @@ let nombre = document.getElementById("nombre");
  		textoApellido.innerHTML = "Last Name cannot be empty";
  		apellido.style.border = "solid 2px hsl(0, 100%, 74%)";
  		equis[1].style.display = "inline-block";
- 		return false;
+ 		esValido = false;
 
  	}
 
@@ -60,7 +60,7 @@ let nombre = document.getElementById("nombre");
  		textoApellido.innerHTML = "";
  		apellido.style.border = "solid 1px hsl(246, 25%, 77%)";
  		equis[1].style.display = "none";
- 		return true;
+ 		esValido = true;
  	}
  	
  });
@@ -74,7 +74,7 @@ let nombre = document.getElementById("nombre");
  		textoEmail.innerHTML = "Email cannot be empty";
  		email.style.border = "solid 2px hsl(0, 100%, 74%)";
  		equis[2].style.display = "inline-block";
- 		return false;
+ 		esValido = false;
 
  	}
 
@@ -83,7 +83,7 @@ let nombre = document.getElementById("nombre");
  		textoEmail.innerHTML = "Looks like this is not an email";
  		email.style.border = "solid 2px hsl(0, 100%, 74%)";
  		equis[2].style.display = "inline-block";
- 		return false;
+ 		esValido = false;
  	}
 
  	else {
@@ -91,7 +91,7 @@ let nombre = document.getElementById("nombre");
  		textoEmail.innerHTML = "";
  		email.style.border = "solid 1px hsl(246, 25%, 77%)";
  		equis[2].style.display = "none";
- 		return true;
+ 		esValido = true;
  	}
  	
  });
@@ -105,7 +105,7 @@ let nombre = document.getElementById("nombre");
  		textoContraseña.innerHTML = "Password cannot be empty";
  		contraseña.style.border = "solid 2px hsl(0, 100%, 74%)";
  		equis[3].style.display = "inline-block";
- 		return false;
+ 		esValido = false;
 
  	}
 
@@ -114,7 +114,7 @@ let nombre = document.getElementById("nombre");
  		textoContraseña.innerHTML = "Must have at least 8 characters";
  		contraseña.style.border = "solid 2px hsl(0, 100%, 74%)";
  		equis[3].style.display = "inline-block";
- 		return false;
+ 		esValido = false;
  	}
 
  	else {
@@ -122,7 +122,7 @@ let nombre = document.getElementById("nombre");
  		textoContraseña.innerHTML = "";
  		contraseña.style.border = "solid 1px hsl(246, 25%, 77%)";
  		equis[3].style.display = "none";
- 		return true;
+ 		esValido = true;
  	}
  	
  });
@@ -131,7 +131,7 @@ let nombre = document.getElementById("nombre");
 
  envio.addEventListener("click", () => {
 
- 	if(nombre && apellido && email && contraseña) {
+ 	if(esValido) {
 
  		envio.disabled = false;
  		alert(`Thanks for choosing us, ${nombre.value}!`);
