@@ -11,7 +11,6 @@ let nombre = document.getElementById("nombre");
  	textoContraseña = document.getElementById("info-pass");
  	validar = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 	esValido = false;
- 	envio.disabled = true;
 
  formu.addEventListener("submit", (ev) => {
 
@@ -133,7 +132,6 @@ let nombre = document.getElementById("nombre");
 
  	if(esValido) {
 
- 		envio.disabled = false;
  		alert(`Thanks for choosing us, ${nombre.value}!`);
  	}
 
